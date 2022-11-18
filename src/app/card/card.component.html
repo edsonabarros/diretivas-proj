@@ -1,0 +1,42 @@
+<h1>My App</h1>
+<p>card works!</p>
+<!-- True = exibir - false = não exibir -->
+<button>Olá mundo</button>
+<!-- Caso eu queira esconder todo o componente, devo alterar no app.component. 
+Se eu quiser esconder parte do componente, devo esconder por aqui -->
+
+<!-- Criando LIs dinamicamente. Array de produtos está no .ts -->
+<ul>
+  <!--   <li *ngFor="let p of produtos">{{p}}</li> --> 
+  <!-- Funciona das duas formas, com ou sem index. 
+  Com index, temos algumas facilidades -->
+  <li *ngFor="let p of produtos; let i = index" (click)="remover(i)">
+  {{i}} - {{ p }}
+  </li>
+  <button (click)="adicionar()">Adicionar</button>
+  <!-- Reativo - a alteração já reflete na página -->
+</ul>
+
+<div [ngSwitch]="menuType">
+<div *ngSwitchDefault>
+<ol>
+  <li>editar perfil</li>
+  <li>adicionar cartão</li>
+</ol>
+</div>
+<div *ngSwitchCase="'admin'">
+  <ol>
+    <li>editar perfil</li>
+    <li>adicionar cartão</li>
+    <li>gerenciar usuários</li>
+  </ol>
+</div>
+<div *ngSwitchCase="'superuser'">
+  <ol>
+    <li>editar perfil</li>
+    <li>adicionar cartão</li>
+    <li>gerenciar usuários</li>
+    <li>gerenciar admins</li>
+  </ol>
+</div>
+</div>
